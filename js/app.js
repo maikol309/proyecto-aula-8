@@ -412,7 +412,7 @@ const CONTENIDO = {
 CONTENIDO[5] = s => `
     <h2 class="h2 reveal">Del diagrama al prototipo</h2>
     <p class="lead reveal">Hoy dejas el simulador: vas a <strong>armar tu prototipo con componentes reales</strong>. Antes, repasa en la presentación interactiva cómo funcionan el servomotor y el sensor ultrasónico y cómo se lee un diagrama de conexiones.</p>
-    ${media('canva', s.canva, 'Presentación interactiva · Del diagrama al prototipo', 'media--square')}
+    ${media('canva', s.canva, 'Presentación interactiva · Del diagrama al prototipo', 'media--wide')}
     <div class="grid grid--2" style="margin-top:34px">
       <div class="card reveal"><div class="card__icon">⚙️</div><h3>El servomotor: una salida</h3><p>Se mueve a un ángulo entre 0° y 180°. Tiene tres cables: <strong>señal</strong>, <strong>alimentación</strong> y <strong>tierra</strong>. Con la librería <code>Servo</code> lo declaras, le asignas un pin con <code>attach</code> y lo mueves con <code>write</code>.</p></div>
       <div class="card reveal" style="--d:.1s"><div class="card__icon">📡</div><h3>El sensor ultrasónico: una entrada</h3><p>Emite un pulso (<code>trig</code>), espera su eco (<code>echo</code>) y, con el tiempo que tarda en volver, calcula la <strong>distancia</strong>.</p></div>
