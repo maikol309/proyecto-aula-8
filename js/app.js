@@ -303,6 +303,7 @@ function viewSesion(n) {
   <div class="wrap">
     <p class="kicker reveal">Contenido</p>
     ${CONTENIDO[n](s)}
+    ${n >= 2 && n <= 4 ? `<h3 class="h3 reveal">Presentación interactiva</h3><p class="reveal">Da clic en la diapositiva para recorrer la presentación de la sesión.</p>${media('canva', s.canva, 'Presentación interactiva · Sesión ' + n, 'media--wide')}` : ''}
     ${s.videos.length ? `<h3 class="h3 reveal">${n === 3 ? 'Videos explicativos: condiciones y ciclos for' : n === 4 ? 'Video: diferencia entre digital y análogo' : 'Video de apoyo'}</h3><div class="grid ${s.videos.length > 1 ? 'grid--2' : ''}">${videos}</div>` : ''}
   </div>
 </section>
