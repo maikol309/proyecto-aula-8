@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proyecto de Aula 8° · Lógica de programación con Arduino</title>
+<meta name="description" content="Fortalecimiento de la lógica de programación mediante el diseño de prototipos con Arduino. I.E. Técnica José Cayetano Vásquez, Ciénega, Boyacá · UPTC.">
+<meta name="theme-color" content="#1c1c1c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a1a2e'/%3E%3Cpath d='M16 16c-2-4-5-6-8-6a6 6 0 0 0 0 12c3 0 6-2 8-6s5-6 8-6a6 6 0 0 1 0 12c-3 0-6-2-8-6z' fill='none' stroke='%2300D9FF' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__ring"></div>
+  <p>Cargando prototipo…</p>
+</div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#/inicio" aria-label="Proyecto de aula 8°, inicio">
+    <svg class="nav__logo" viewBox="0 0 60 28" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" aria-hidden="true"><path d="M30 14C26 7 20 4 14.5 4 8.5 4 4 8.4 4 14s4.500 10 10.500 10C20 24 26 21 30 14c4-7 10-10 15.500-10C51.500 4 56 8.400 56 14s-4.500 10-10.500 10C40 24 34 21 30 14Z"/><path d="M10 14h9M45.500 10v8M41.500 14h8" stroke-width="2.600"/></svg>
+    <span>PROYECTO DE AULA 8°</span>
+  </a>
+  <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menú"><i></i><i></i><i></i></button>
+  <nav class="nav__menu" id="navMenu" aria-label="Principal">
+    <a href="#/inicio" data-route="inicio">Inicio</a>
+    <a href="#/sesion-1" data-route="sesion-1">Sesión 1</a>
+    <a href="#/sesion-2" data-route="sesion-2">Sesión 2</a>
+    <a href="#/sesion-3" data-route="sesion-3">Sesión 3</a>
+    <a href="#/sesion-4" data-route="sesion-4">Sesión 4</a>
+    <a href="#/sesion-5" data-route="sesion-5">Sesión 5</a>
+    <a href="#/sobre-el-proyecto" data-route="sobre-el-proyecto">Sobre el proyecto</a>
+  </nav>
+</header>
+
+<main id="main"></main>
+
+<footer class="footer">
+  <canvas class="footer__canvas" id="footerCircuit" aria-hidden="true"></canvas>
+  <div class="footer__inner">
+    <div>
+      <p class="footer__by">Desarrollado por <strong>Maicol Alexander Cruz Cruz</strong> — UPTC 2026</p>
+      <p>Contacto: <a href="mailto:Maicol.cruz01@uptc.edu.co">Maicol.cruz01@uptc.edu.co</a></p>
+      <p class="footer__small">I.E. Técnica José Cayetano Vásquez · Ciénega, Boyacá</p>
+    </div>
+    <div class="footer__badge" aria-label="Licenciatura en Informática, Universidad Pedagógica y Tecnológica de Colombia">
+      <span class="footer__badge-mark">∞</span>
+      <span><b>Licenciatura en</b><br>INFORMÁTICA<small>Universidad Pedagógica y Tecnológica de Colombia</small></span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" aria-label="Volver arriba">↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
