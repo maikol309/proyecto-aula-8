@@ -303,7 +303,6 @@ function viewSesion(n) {
   <div class="wrap">
     <p class="kicker reveal">Contenido</p>
     ${CONTENIDO[n](s)}
-    ${n >= 2 && n <= 4 ? `<h3 class="h3 reveal">Presentación interactiva</h3><p class="reveal">Da clic en la diapositiva para recorrer la presentación de la sesión.</p>${media('canva', s.canva, 'Presentación interactiva · Sesión ' + n, 'media--wide')}` : ''}
     ${s.videos.length ? `<h3 class="h3 reveal">${n === 3 ? 'Videos explicativos: condiciones y ciclos for' : n === 4 ? 'Video: diferencia entre digital y análogo' : 'Video de apoyo'}</h3><div class="grid ${s.videos.length > 1 ? 'grid--2' : ''}">${videos}</div>` : ''}
   </div>
 </section>
@@ -369,7 +368,8 @@ const CONTENIDO = {
   2: s => `
     <h2 class="h2 reveal">¿Cómo "escucha" y "responde" Arduino?</h2>
     <p class="lead reveal">La semana pasada le diste a Arduino una instrucción fija: encender y apagar un LED cada cierto tiempo, sin importar lo que pasara alrededor. Hoy das un paso más: Arduino va a <strong>escuchar</strong> el mundo exterior a través de un pulsador (una entrada digital) y va a <strong>responder</strong> encendiendo un LED (una salida digital).</p>
-    <div class="grid grid--3" style="margin-top:26px">
+    ${media('canva', s.canva, 'Presentación interactiva · Entradas y salidas digitales', 'media--wide')}
+    <div class="grid grid--3" style="margin-top:34px">
       ${termCard('pinMode()', '¿Qué hace?', 'Le dice a Arduino si un pin va a recibir información (INPUT) o a enviarla (OUTPUT), antes de usarlo con digitalRead o digitalWrite.', 0)}
       ${termCard('digitalRead() / digitalWrite()', '¿Qué hacen?', 'digitalRead revisa si un pin de entrada está en HIGH o LOW; digitalWrite envía ese mismo tipo de señal a un pin de salida, como un LED.', 1)}
       <div class="card card--term reveal" style="--d:.16s"><h4>Entrada vs. salida digital</h4><p><strong>Entrada:</strong> algo que Arduino lee, como un pulsador.<br><strong>Salida:</strong> algo que Arduino controla, como un LED.<br>Hoy conectas dos de cada una y las programas para que trabajen de forma independiente.</p></div>
@@ -380,7 +380,8 @@ const CONTENIDO = {
   3: s => `
     <h2 class="h2 reveal">Decisiones y repeticiones en el código</h2>
     <p class="lead reveal">Un programa no solo ejecuta instrucciones en orden: también puede decidir qué hacer y repetir acciones. Estas dos ideas son la base de casi cualquier proyecto con Arduino.</p>
-    <div class="grid grid--2" style="margin-top:22px">
+    ${media('canva', s.canva, 'Presentación interactiva · Condicionales y ciclos', 'media--wide')}
+    <div class="grid grid--2" style="margin-top:34px">
       <div class="card reveal"><div class="card__icon">🔀</div><h3>¿Qué hace if / else?</h3><p>Evalúa una condición y decide entre dos caminos: si se cumple, ejecuta un bloque de código; si no, ejecuta otro. Así tu prototipo "decide" a partir de lo que mide un sensor.</p></div>
       <div class="card reveal" style="--d:.1s"><div class="card__icon">🔁</div><h3>¿Qué hace un ciclo for?</h3><p>Repite un bloque de instrucciones un número determinado de veces, sin tener que escribirlas una por una. Aquí repite 5 veces un parpadeo.</p></div>
     </div>
@@ -392,7 +393,8 @@ const CONTENIDO = {
   4: s => `
     <h2 class="h2 reveal">Señales que no son solo encendido o apagado</h2>
     <p class="lead reveal">Hasta ahora, Arduino solo te ha dicho "sí" o "no": un pulsador presionado o no, un LED encendido o apagado. Pero muchas cosas en el mundo real no son así: la cantidad de luz en un salón, la humedad de una planta o qué tanto giras una perilla cambian poco a poco, no de golpe. Para leer ese tipo de valores, Arduino usa <code>analogRead()</code>, que en vez de devolver solo 0 o 1, devuelve un número entre <strong>0 y 1023</strong>.</p>
-    <div class="grid grid--2" style="margin-top:22px">
+    ${media('canva', s.canva, 'Presentación interactiva · Entradas analógicas y map()', 'media--wide')}
+    <div class="grid grid--2" style="margin-top:34px">
       <div class="card reveal"><div class="card__icon">🎚️</div><h3>analogRead()</h3><p>Lee un valor entre 0 y 1023 desde un pin análogo (A0 a A5), representando qué tan fuerte es la señal del sensor —por ejemplo, cuánta luz o humedad detecta.</p></div>
       <div class="card reveal" style="--d:.08s"><div class="card__icon">📏</div><h3>map()</h3><p>Traduce un número de un rango (ej. 0-1023) a otro rango distinto (ej. 0-6), para que sea más fácil de usar.</p></div>
       <div class="card reveal"><div class="card__icon">🖥️</div><h3>Monitor Serie</h3><p>Una ventana que muestra, en tiempo real, los valores que Serial.print() va enviando desde el programa.</p></div>
