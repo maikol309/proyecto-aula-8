@@ -235,6 +235,15 @@ function viewSobre() {
     ['Sesión 4 · 19 al 23 de octubre', 'Entradas análogas y la función map().'],
     ['Sesión 5 · 27 al 31 de octubre', 'Del diagrama al prototipo: montaje de entradas y salidas.']
   ].map(([b, t]) => `<div class="timeline__item reveal"><b>${b}</b>${t}</div>`).join('');
+  const infoCards = [
+    ['👨‍💻', 'Autor', 'Maicol Alexander Cruz Cruz', 'Código UPTC: 202220426'],
+    ['👥', 'Población / Objetivo', 'Grado 8° (Octavo)', '', '🎒 25 estudiantes'],
+    ['👩‍🏫', 'Asesora', 'Adriana Sandoval Espitia'],
+    ['👨‍🏫', 'Docente titular', 'Óscar Mauricio Hernández Yomayuza'],
+    ['🏫', 'Institución', 'I.E. Técnica José Cayetano Vásquez', 'Ciénega, Boyacá'],
+    ['🎓', 'Programa', 'Licenciatura en Informática', 'Universidad Pedagógica y Tecnológica de Colombia (UPTC)'],
+    ['✉️', 'Contacto', '<a href="mailto:Maicol.cruz01@uptc.edu.co">Maicol.cruz01@uptc.edu.co</a>']
+  ].map(([ico, lab, val, sub, tag], i) => `<div class="infocard reveal" style="--d:${(i % 2) * .08}s"><div class="infocard__icon" aria-hidden="true">${ico}</div><div><span class="infocard__label">${lab}</span><span class="infocard__value">${val}</span>${sub ? `<span class="infocard__sub">${sub}</span>` : ''}${tag ? `<span class="infocard__tag">${tag}</span>` : ''}</div></div>`).join('');
   return `
 <section class="hero hero--short hero--session">
   <canvas data-circuit data-still aria-hidden="true"></canvas>
@@ -250,20 +259,31 @@ function viewSobre() {
       <p class="kicker">Objetivo de la estrategia</p>
       <p class="lead" style="margin:0">Fortalecer la lógica de programación de los estudiantes de grado octavo mediante el diseño, simulación y programación de prototipos con Arduino, usando Tinkercad Circuits para comprender el código antes de aplicarlo en sus proyectos físicos.</p>
     </div>
-    <div class="split" style="margin-top:40px">
-      <div class="reveal">
-        <h2 class="h2">Quiénes y dónde</h2>
-        <ul class="facts">
-          <li><span><strong>Institución:</strong> I.E. Técnica José Cayetano Vásquez, Ciénega, Boyacá.</span></li>
-          <li><span><strong>Grado:</strong> octavo, en el área de Tecnología e Informática.</span></li>
-          <li><span><strong>Autor:</strong> Maicol Alexander Cruz Cruz, Licenciatura en Informática, UPTC.</span></li>
-          <li><span><strong>Herramientas:</strong> Tinkercad Circuits para simular y Arduino para construir los prototipos.</span></li>
-        </ul>
-      </div>
-      <div class="reveal">
-        <h2 class="h2">Cronograma</h2>
-        <div class="timeline">${fechas}</div>
-      </div>
+  </div>
+</section>
+
+<section class="section section--mint">
+  <div class="wrap">
+    <p class="kicker reveal">Ficha del proyecto</p>
+    <h2 class="h2 h2--ink reveal">Quiénes participan</h2>
+    <div class="infogrid">${infoCards}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="kicker reveal">Cronograma</p>
+    <h2 class="h2 reveal">Sesión a sesión</h2>
+    <div class="timeline">${fechas}</div>
+  </div>
+</section>
+
+<section class="section section--mint">
+  <div class="wrap">
+    <div class="logos reveal" aria-label="Logotipos del proyecto">
+      <figure class="logos__item logos__item--wide"><img src="img/Logo%20LI.svg" alt="Licenciatura en Informática, Universidad Pedagógica y Tecnológica de Colombia" loading="lazy"></figure>
+      <figure class="logos__item"><img src="img/Logo_de_la_UPTC.svg" alt="Escudo de la Universidad Pedagógica y Tecnológica de Colombia (UPTC)" loading="lazy"></figure>
+      <figure class="logos__item"><img src="img/logo_arduino_programacion.png" alt="Logotipo del proyecto de aula: Arduino y programación" loading="lazy"></figure>
     </div>
   </div>
 </section>`;
