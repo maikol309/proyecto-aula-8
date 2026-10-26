@@ -155,7 +155,7 @@ const SESIONES = {
    ============================================================ */
 const heroHome = () => `
 <section class="hero hero--home">
-  <canvas data-circuit aria-hidden="true"></canvas>
+  <canvas data-circuit data-pulses="4" aria-hidden="true"></canvas>
   <div class="wrap hero__inner">
     <div>
       <p class="eyebrow">Práctica pedagógica · Licenciatura en Informática <b>UPTC</b></p>
@@ -163,7 +163,7 @@ const heroHome = () => `
       <p class="hero__sub">Este sitio documenta la estrategia pedagógica desarrollada con los estudiantes de grado octavo de la I.E. Técnica José Cayetano Vásquez (Ciénega, Boyacá).</p>
       <div class="hero__cta">
         <a class="btn" href="#/sesion-1">Empezar por la Sesión 1 →</a>
-        <a class="btn btn--ghost" href="#/sobre-el-proyecto">Sobre el proyecto</a>
+        <a class="btn btn--ghost" href="https://maikol309.github.io/arduino-grado8/" target="_blank" rel="noopener noreferrer">Ver evidencias ↗</a>
       </div>
     </div>
     <div class="board3d">
@@ -212,6 +212,19 @@ function viewInicio() {
     <h3 class="h3 reveal" style="color:var(--teal);margin-top:0">CRONOGRAMA ⤵️</h3>
     <div class="route reveal" style="--w:${Math.round((HECHAS - 1) / 5 * 90)}%"><div class="route__fill"></div>${steps}</div>
     <div class="grid grid--3">${cards}</div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="evidence reveal">
+      <div class="evidence__icon" aria-hidden="true">📸</div>
+      <div class="evidence__text">
+        <p class="kicker" style="color:var(--cyan)">Evidencias del proyecto</p>
+        <h2>Mira los prototipos y el trabajo de los estudiantes</h2>
+        <p>Fotografías del proceso, diagramas de conexión y el código de cada prototipo construido por los grupos de grado octavo.</p>
+      </div>
+      <a class="btn" href="https://maikol309.github.io/arduino-grado8/" target="_blank" rel="noopener noreferrer">Ver evidencias ↗</a>
+    </div>
   </div>
 </section>
 <section class="section">
@@ -669,6 +682,12 @@ function circuit(canvas) {
       let L = 0; const segs = pts.slice(1).map((p, i) => { const l = Math.hypot(p[0] - pts[i][0], p[1] - pts[i][1]); L += l; return l; });
       return { pts, segs, L: L || 1, t: Math.random(), v: .0015 + Math.random() * .003, c: Math.random() < .2 ? '#E4712B' : '#00D9FF', dot: Math.random() < .35, pulse: Math.random() < .5 };
     });
+    // data-pulses="N": solo N puntos en movimiento (pocos, para no distraer)
+    if (canvas.dataset.pulses) {
+      const n = +canvas.dataset.pulses;
+      paths.forEach(p => { p.pulse = false; });
+      [...paths].sort(() => Math.random() - .5).slice(0, n).forEach(p => { p.pulse = true; p.v = .0012 + Math.random() * .0012; });
+    }
   };
   const at = (p, d) => { let i = 0; while (i < p.segs.length - 1 && d > p.segs[i]) { d -= p.segs[i]; i++; } const a = p.pts[i], b = p.pts[i + 1], k = p.segs[i] ? d / p.segs[i] : 0; return [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k]; };
   const frame = () => {
