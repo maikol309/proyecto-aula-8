@@ -364,3 +364,27 @@ table.pins code{font-family:var(--f-code);color:var(--orange);font-weight:700}
 
 /* ---------- inicio: fondo de circuitos fijo y discreto ---------- */
 .hero--home canvas{opacity:.5}
+
+/* ---------- sesión en curso (verde) ---------- */
+.card--now{border-color:#1e9e57;box-shadow:0 0 0 3px rgba(30,158,87,.12)}
+.card--now::before{content:"● En curso";position:absolute;top:18px;right:18px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#137333;background:#e6f4ea;border:1px solid #ceead6;padding:3px 10px;border-radius:999px;animation:nowPulse 2.4s ease-in-out infinite}
+.card--now:hover{border-color:#1e9e57}
+@keyframes nowPulse{50%{box-shadow:0 0 0 5px rgba(30,158,87,.18)}}
+.route a.is-now span{border-color:#1e9e57;color:#fff;background:#1e9e57;box-shadow:0 0 0 4px rgba(30,158,87,.2)}
+.chips li.chip--now{border-color:#4cd98a;background:rgba(30,158,87,.25);color:#c9ffe0;font-weight:700}
+.chips li.chip--now::before{content:"● ";color:#4cd98a}
+
+/* ---------- instalación del Arduino IDE ---------- */
+.ide{margin-top:26px;display:grid;gap:22px}
+.ide__cta{display:flex;align-items:center;gap:22px;flex-wrap:wrap;background:linear-gradient(135deg,var(--navy),var(--navy-2));color:var(--paper);border:1px solid #2a3a63;border-left:6px solid var(--orange);border-radius:var(--radius);padding:clamp(20px,3vw,30px);box-shadow:var(--shadow)}
+.ide__icon{font-size:2.2rem;width:64px;height:64px;flex:none;display:grid;place-content:center;border-radius:16px;background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.35)}
+.ide__cta>div:nth-child(2){flex:1 1 280px}
+.ide__cta h3{font-size:1.6rem;color:var(--cyan);margin-bottom:.2em}
+.ide__cta p{margin:0;color:#cfe3ea}
+.ide__steps{list-style:none;counter-reset:ide;margin:0;padding:0;display:grid;gap:12px}
+.ide__steps li{counter-increment:ide;position:relative;display:grid;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px 14px 66px;transition:border-color .25s,transform .25s}
+.ide__steps li:hover{border-color:var(--teal);transform:translateX(4px)}
+.ide__steps li::before{content:counter(ide);position:absolute;left:16px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-content:center;font:700 1.1rem var(--f-title)}
+.ide__steps b{font-family:var(--f-title);font-size:1.15rem;color:var(--head)}
+.ide__steps span{color:var(--muted);font-size:.96rem}
+@media (max-width:620px){.ide__cta .btn{width:100%;justify-content:center}}

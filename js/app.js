@@ -61,7 +61,8 @@ const RUTA = [
   { n: 5, icon: 'ƒ', t: 'Del diagrama al prototipo', d: 'Montaje de entradas y salidas con Arduino: servomotor, sensor ultrasónico y lectura de diagramas.' },
   { n: 6, icon: '✓', t: 'Integración final y depuración',    d: 'Corrección, explicación y evidencias finales.' }
 ];
-const HECHAS = 5;
+const HECHAS = 4;      // sesiones terminadas
+const EN_CURSO = 5;    // sesión que se está realizando (0 si ninguna)
 
 const SESIONES = {
   1: {
@@ -128,10 +129,10 @@ const SESIONES = {
       'En el ciclo for que apaga las parejas, en vez de usar 7-i y 8+i (que arrancan desde el centro), piensa qué pines tendrías que usar para que la primera pareja apagada sea la de los extremos (2 y 13).']
   },
   5: {
-    fecha: 'SESIÓN 5 · 27 al 31 de octubre de 2026', horas: '2H',
+    fecha: 'SESIÓN 5 · 26 y 30 de octubre de 2026', horas: '4H', enCurso: true,
     titulo: 'Del diagrama al prototipo',
     sub: 'Armo y pruebo mis componentes: montaje de entradas y salidas con Arduino.',
-    chips: ['Componentes físicos', 'Grupos de proyecto', '2 horas'],
+    chips: ['En curso', 'Componentes físicos', 'Grupos de proyecto', '4 horas · 26 y 30 de octubre'],
     obj: ['Montar tu prototipo a partir de un diagrama de conexiones',
           'Montar un prototipo con Arduino a partir de un diagrama de conexiones, reconociendo la función de sus componentes de entrada y de salida, y traducir esas conexiones en variables y configuración de pines dentro del programa.'],
     canva: 'DAHYzNkW6dY/RxsXtWac0h4d-nldlHvrOg', drive: '1jN-Xsbiw6XZ7eFm7XHmJi4p0JwVkjCXf',
@@ -146,9 +147,36 @@ const SESIONES = {
     reto: ['Lista de chequeo del montaje', 'Marca cada paso cuando lo completes. Recuerda: primero la alimentación, luego las entradas y por último las salidas.',
       ['Paso 1 · Cada integrante identifica en el diagrama un componente, dice a qué pin se conecta y si es de entrada o de salida.', 'Paso 2 · Monta primero la alimentación (5V y tierra) en la protoboard, luego los componentes de entrada y por último los de salida, siguiendo el diagrama.', 'Paso 3 · Toma fotografías durante el armado: los componentes antes de conectar, el proceso de conexión y el prototipo terminado.', 'Paso 4 · Revisa la conexión con la lista de chequeo del diagrama y presenta el prototipo al docente, sin energizarlo hasta recibir el visto bueno.', 'Paso 5 (si alcanza el tiempo) · Elabora la tabla de pines (componente, pin y nombre de la variable) y escribe al inicio del programa las variables y, en setup(), la configuración con pinMode().'],
       'Reglas de seguridad: arma siempre con el cable USB desconectado, respeta la polaridad de los componentes y no energices el circuito hasta recibir el visto bueno del docente.'],
-    extra: true
+    extra: true, ide: true
   }
 };
+
+const IDE_URL = 'https://www.arduino.cc/en/software/';
+const IDE_SECCION = `
+<section class="section">
+  <div class="wrap">
+    <p class="kicker reveal">Antes de empezar</p>
+    <h2 class="h2 h2--ink reveal">Instala el Arduino IDE</h2>
+    <p class="lead reveal">El Arduino IDE es el programa donde escribes el código y lo cargas a tu placa. Instálalo en tu computador antes del montaje: es gratuito.</p>
+    <div class="ide reveal">
+      <div class="ide__cta">
+        <div class="ide__icon" aria-hidden="true">⬇️</div>
+        <div>
+          <h3>Descargar Arduino IDE</h3>
+          <p>Página oficial de Arduino. Elige la versión para tu sistema operativo (Windows, macOS o Linux).</p>
+        </div>
+        <a class="btn" href="${IDE_URL}" target="_blank" rel="noopener noreferrer">Ir a la descarga ↗</a>
+      </div>
+      <ol class="ide__steps">
+        <li><b>Entra a la página de descarga</b><span>Pulsa el botón y busca "Arduino IDE 2.x".</span></li>
+        <li><b>Elige tu sistema operativo</b><span>Por ejemplo, Windows (instalador) si usas un computador con Windows.</span></li>
+        <li><b>Descarga el archivo</b><span>Puedes pulsar "Just Download" para descargarlo sin donar.</span></li>
+        <li><b>Ejecuta el instalador</b><span>Acepta las opciones por defecto. Si Windows pregunta por instalar controladores USB, pulsa "Instalar".</span></li>
+        <li><b>Abre el programa y conecta la placa</b><span>Con el cable USB, en <i>Herramientas</i> elige la placa "Arduino Uno" y el puerto (COM) que aparezca.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>`;
 
 /* ============================================================
    PLANTILLAS DE CADA VISTA
@@ -188,13 +216,13 @@ const heroHome = () => `
 
 function viewInicio() {
   const cards = RUTA.map((r, i) => {
-    const done = r.n <= HECHAS;
-    const inner = `<div class="card__icon" aria-hidden="true">${r.icon}</div><h3>Sesión ${r.n}</h3><h4>${esc(r.t)}</h4><p>${esc(r.d)}</p>${done ? '<span class="card__go">Ver sesión →</span>' : ''}`;
-    return done
-      ? `<a class="card card--link card--done reveal" style="--d:${i * .08}s" href="#/sesion-${r.n}">${inner}</a>`
+    const done = r.n <= HECHAS, now = r.n === EN_CURSO;
+    const inner = `<div class="card__icon" aria-hidden="true">${r.icon}</div><h3>Sesión ${r.n}</h3><h4>${esc(r.t)}</h4><p>${esc(r.d)}</p>${done || now ? '<span class="card__go">Ver sesión →</span>' : ''}`;
+    return done || now
+      ? `<a class="card card--link ${now ? 'card--now' : 'card--done'} reveal" style="--d:${i * .08}s" href="#/sesion-${r.n}">${inner}</a>`
       : `<div class="card card--soon reveal" style="--d:${i * .08}s">${inner}</div>`;
   }).join('');
-  const steps = RUTA.map(r => `<a href="#/sesion-${r.n}" class="${r.n <= HECHAS ? 'is-done' : ''}" ${r.n > HECHAS ? 'tabindex="-1" aria-disabled="true"' : ''}><span>${r.n}</span>Sesión ${r.n}</a>`).join('');
+  const steps = RUTA.map(r => `<a href="#/sesion-${r.n}" class="${r.n <= HECHAS ? 'is-done' : r.n === EN_CURSO ? 'is-now' : ''}" ${r.n > EN_CURSO ? 'tabindex="-1" aria-disabled="true"' : ''}><span>${r.n}</span>Sesión ${r.n}</a>`).join('');
   return `${heroHome()}
 <section class="section">
   <div class="wrap">
@@ -210,7 +238,7 @@ function viewInicio() {
     <p class="kicker reveal">Ruta de aprendizaje</p>
     <h2 class="h2 h2--ink reveal">Cada sesión conecta una idea de programación con un prototipo</h2>
     <h3 class="h3 reveal" style="color:var(--teal);margin-top:0">CRONOGRAMA ⤵️</h3>
-    <div class="route reveal" style="--w:${Math.round((HECHAS - 1) / 5 * 90)}%"><div class="route__fill"></div>${steps}</div>
+    <div class="route reveal" style="--w:${Math.round((Math.max(HECHAS, EN_CURSO) - 1) / 5 * 90)}%"><div class="route__fill"></div>${steps}</div>
     <div class="grid grid--3">${cards}</div>
   </div>
 </section>
@@ -246,7 +274,7 @@ function viewSobre() {
     ['Sesión 2 · 28 de septiembre al 2 de octubre', 'Entradas y salidas digitales con pulsador y LED.'],
     ['Sesión 3 · 13 al 17 de octubre', 'Condicionales y ciclos for con seis LED.'],
     ['Sesión 4 · 19 al 23 de octubre', 'Entradas análogas y la función map().'],
-    ['Sesión 5 · 27 al 31 de octubre', 'Del diagrama al prototipo: montaje de entradas y salidas.']
+    ['Sesión 5 · 26 y 30 de octubre · En curso', 'Del diagrama al prototipo: montaje de entradas y salidas.']
   ].map(([b, t]) => `<div class="timeline__item reveal"><b>${b}</b>${t}</div>`).join('');
   const infoCards = [
     ['👨‍💻', 'Autor', 'Maicol Alexander Cruz Cruz', 'Código UPTC: 202220426'],
@@ -318,7 +346,7 @@ function viewSesion(n) {
     <p class="eyebrow">${esc(s.fecha)} <b>(${s.horas})</b></p>
     <h1><span class="grad">${esc(s.titulo)}</span></h1>
     <p class="hero__sub">${esc(s.sub)}</p>
-    <ul class="chips">${(s.chips || ['Tinkercad Circuits', 'Equipos de 2 a 3', s.horas === '2H' ? '2 horas' : s.horas.replace('H', ' horas')]).map(c => `<li>${esc(c)}</li>`).join('')}</ul>
+    <ul class="chips">${(s.chips || ['Tinkercad Circuits', 'Equipos de 2 a 3', s.horas === '2H' ? '2 horas' : s.horas.replace('H', ' horas')]).map(c => `<li${c === 'En curso' ? ' class="chip--now"' : ''}>${esc(c)}</li>`).join('')}</ul>
   </div></div>
 </section>
 
@@ -340,6 +368,7 @@ function viewSesion(n) {
   </div>
 </section>
 
+${s.ide ? IDE_SECCION : ''}
 <section class="section">
   <div class="wrap">
     <p class="kicker reveal">Actividad práctica</p>
