@@ -33,7 +33,8 @@ El sitio replica las páginas del Google Sites y las organiza en una sola aplica
 | **Sesión 2** · Entradas y salidas digitales | `pinMode`, `digitalWrite` y `digitalRead` con pulsador y LED. |
 | **Sesión 3** · Condicionales y ciclos | `if / else` y ciclo `for` con seis LED. |
 | **Sesión 4** · Entradas analógicas y `map()` | `analogRead`, Monitor Serie y una cortina de 12 LED. |
-| **Sesión 5** · Del diagrama al prototipo | Montaje de entradas y salidas: servomotor, sensor ultrasónico y lectura de diagramas de conexiones. |
+| **Sesión 5** · Del diagrama al prototipo | Montaje de entradas y salidas: servomotor, sensor ultrasónico y lectura de diagramas de conexiones. Incluye la instalación del Arduino IDE. |
+| **Sesión 6** · Verificación y cierre del prototipo | Depuración final, matriz de valoración (rúbrica) incrustada, post-test para estudiantes y docente titular, y entrega de evidencias. |
 | **Sobre el proyecto** | Contexto institucional, ficha del proyecto, cronograma y logotipos. |
 
 Cada página de sesión sigue el mismo recorrido que el sitio original:
@@ -69,6 +70,7 @@ Cada página de sesión sigue el mismo recorrido que el sitio original:
   - Sesión 3: secuencia de seis LED con ciclos `for`, con `delay` y condición ajustables.
   - Sesión 4: cortina de 12 LED controlada por un potenciómetro, con modo "Cortina Invertida".
   - Sesión 5: servomotor (0° a 180°) y sensor ultrasónico (distancia y tiempo de eco).
+  - Sesión 6: "Detective de errores", un juego para encontrar la línea con el error en tres programas.
 - Código de ejemplo con resaltado de sintaxis, línea activa durante la simulación y botón para copiar.
 - Predicciones y retos que se guardan en el navegador de cada estudiante.
 

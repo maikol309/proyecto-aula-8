@@ -59,10 +59,10 @@ const RUTA = [
   { n: 3, icon: '⟳', t: 'Condicionales y ciclos',            d: 'if / else, for y while aplicados a sensores.' },
   { n: 4, icon: '◉', t: 'Entradas análogas, sensores y motores', d: 'analogRead, analogWrite y componentes del prototipo.' },
   { n: 5, icon: 'ƒ', t: 'Del diagrama al prototipo', d: 'Montaje de entradas y salidas con Arduino: servomotor, sensor ultrasónico y lectura de diagramas.' },
-  { n: 6, icon: '✓', t: 'Integración final y depuración',    d: 'Corrección, explicación y evidencias finales.' }
+  { n: 6, icon: '✓', t: 'Verificación y cierre del prototipo', d: 'Depuración, calificación con la rúbrica, post-test y evidencias finales.' }
 ];
-const HECHAS = 4;      // sesiones terminadas
-const EN_CURSO = 5;    // sesión que se está realizando (0 si ninguna)
+const HECHAS = 5;      // sesiones terminadas
+const EN_CURSO = 6;    // sesión que se está realizando (0 si ninguna)
 
 const SESIONES = {
   1: {
@@ -129,10 +129,10 @@ const SESIONES = {
       'En el ciclo for que apaga las parejas, en vez de usar 7-i y 8+i (que arrancan desde el centro), piensa qué pines tendrías que usar para que la primera pareja apagada sea la de los extremos (2 y 13).']
   },
   5: {
-    fecha: 'SESIÓN 5 · 26 y 30 de octubre de 2026', horas: '4H', enCurso: true,
+    fecha: 'SESIÓN 5 · 26 y 30 de octubre de 2026', horas: '4H',
     titulo: 'Del diagrama al prototipo',
     sub: 'Armo y pruebo mis componentes: montaje de entradas y salidas con Arduino.',
-    chips: ['En curso', 'Componentes físicos', 'Grupos de proyecto', '4 horas · 26 y 30 de octubre'],
+    chips: ['Componentes físicos', 'Grupos de proyecto', '4 horas · 26 y 30 de octubre'],
     obj: ['Montar tu prototipo a partir de un diagrama de conexiones',
           'Montar un prototipo con Arduino a partir de un diagrama de conexiones, reconociendo la función de sus componentes de entrada y de salida, y traducir esas conexiones en variables y configuración de pines dentro del programa.'],
     canva: 'DAHYzNkW6dY/RxsXtWac0h4d-nldlHvrOg', drive: '1jN-Xsbiw6XZ7eFm7XHmJi4p0JwVkjCXf',
@@ -148,8 +148,32 @@ const SESIONES = {
       ['Paso 1 · Cada integrante identifica en el diagrama un componente, dice a qué pin se conecta y si es de entrada o de salida.', 'Paso 2 · Monta primero la alimentación (5V y tierra) en la protoboard, luego los componentes de entrada y por último los de salida, siguiendo el diagrama.', 'Paso 3 · Toma fotografías durante el armado: los componentes antes de conectar, el proceso de conexión y el prototipo terminado.', 'Paso 4 · Revisa la conexión con la lista de chequeo del diagrama y presenta el prototipo al docente, sin energizarlo hasta recibir el visto bueno.', 'Paso 5 (si alcanza el tiempo) · Elabora la tabla de pines (componente, pin y nombre de la variable) y escribe al inicio del programa las variables y, en setup(), la configuración con pinMode().'],
       'Reglas de seguridad: arma siempre con el cable USB desconectado, respeta la polaridad de los componentes y no energices el circuito hasta recibir el visto bueno del docente.'],
     extra: true, ide: true
+  },
+  6: {
+    fecha: 'SESIÓN 6 · 9 de noviembre de 2026', horas: '2H',
+    titulo: 'Verificación y cierre del prototipo',
+    sub: 'Ajusto los últimos detalles, explico mi código y valoro lo aprendido.',
+    chips: ['En curso', 'Cierre del proyecto', 'Grupos de proyecto', '2 horas · 9 de noviembre'],
+    obj: ['Verificar, depurar y explicar tu prototipo',
+          'Verificar y depurar un prototipo con Arduino, explicando con tus palabras la lógica de tu programa (variables, entradas y salidas, condiciones y ciclos) y valorando lo aprendido durante el proyecto.'],
+    drive: '10atE_LrQIliDdmfYU1M1QaWB3yQGgmLk',            // rúbrica (matriz de valoración)
+    slides: '1sWBvpj54lzIurN47wZk_KUM7cQx5QS8s',           // presentación de la sesión
+    videos: [],
+    guiaTitulo: 'Matriz de valoración (rúbrica de evaluación)',
+    actividad: ['Últimos detalles y verificación por turnos', 'Fase 1 (20 minutos): afina tu prototipo y depura lo que falte. Fase 2 (40 minutos): cuando el docente llame a tu grupo, haz la demostración y responde una pregunta sobre tu código.'],
+    sinRefuerzo: true,
+    predTitulo: '💬 Preguntas detonantes', predSub: 'Piensa y responde antes de empezar.',
+    pred: ['Cuando algo no funciona en tu prototipo, ¿qué es lo primero que revisas?', '¿Cómo puedes saber si el problema está en los cables o en el código?', '¿Qué fue lo que más te costó en todo el proyecto?'],
+    retoKicker: 'Verificación', retoIcon: '✅',
+    reto: ['Lista de verificación del prototipo', 'Marca cada paso cuando lo completes. Primero los cables y la alimentación, después el código, y siempre prueba paso a paso.',
+      ['Paso 1 · Carga la versión del código de la Sesión 5 (ajustada en casa) y prueba el prototipo comparando lo que hace con lo que habías planeado.', 'Paso 2 · Si queda algo por corregir, depura en este orden: alimentación, pines y variables, pinMode() y lógica. Anota en el cuaderno el error y cómo lo resolviste.', 'Paso 3 · Repártanse la explicación: cada integrante debe poder contar qué hace una parte del código.', 'Paso 4 · Cuando el docente llame a tu grupo, haz la demostración del prototipo funcionando y responde la pregunta oral sobre el código.', 'Paso 5 · Mientras esperas tu turno, toma fotografías o un video corto del prototipo en funcionamiento y guarda el código final.'],
+      'No muevas cables con el USB conectado y respeta la polaridad de los componentes.'],
+    cierre: 6
   }
 };
+
+const POSTEST_ESTUDIANTES = 'https://forms.gle/SkiAAGUGaBApgD3t9';
+const POSTEST_DOCENTE = 'https://forms.gle/9xLH3afoWAV1arF16';
 
 const IDE_URL = 'https://www.arduino.cc/en/software/';
 const IDE_SECCION = `
@@ -274,7 +298,8 @@ function viewSobre() {
     ['Sesión 2 · 28 de septiembre al 2 de octubre', 'Entradas y salidas digitales con pulsador y LED.'],
     ['Sesión 3 · 13 al 17 de octubre', 'Condicionales y ciclos for con seis LED.'],
     ['Sesión 4 · 19 al 23 de octubre', 'Entradas análogas y la función map().'],
-    ['Sesión 5 · 26 y 30 de octubre · En curso', 'Del diagrama al prototipo: montaje de entradas y salidas.']
+    ['Sesión 5 · 26 y 30 de octubre', 'Del diagrama al prototipo: montaje de entradas y salidas.'],
+    ['Sesión 6 · 9 de noviembre · En curso', 'Verificación y cierre del prototipo: rúbrica, post-test y evidencias finales.']
   ].map(([b, t]) => `<div class="timeline__item reveal"><b>${b}</b>${t}</div>`).join('');
   const infoCards = [
     ['👨‍💻', 'Autor', 'Maicol Alexander Cruz Cruz', 'Código UPTC: 202220426'],
@@ -333,7 +358,7 @@ function viewSobre() {
 function viewSesion(n) {
   const s = SESIONES[n];
   const prev = n > 1 ? `<a class="btn btn--teal" href="#/sesion-${n - 1}">← Sesión ${n - 1}</a>` : `<a class="btn btn--teal" href="#/inicio">← Inicio</a>`;
-  const next = n < 5 ?`<a class="btn" href="#/sesion-${n + 1}">Sesión ${n + 1} →</a>` : `<a class="btn" href="#/sobre-el-proyecto">Sobre el proyecto →</a>`;
+  const next = n < 6 ? `<a class="btn" href="#/sesion-${n + 1}">Sesión ${n + 1} →</a>` : `<a class="btn" href="#/sobre-el-proyecto">Sobre el proyecto →</a>`;
   const videos = s.videos.map(v => `<div>${media(v[0], v[1], v[2])}<p class="media__cap reveal">${esc(v[2])}</p></div>`).join('');
   const reto = s.reto;
   const checks = reto[2].map((t, i) => `<li><label><input type="checkbox" data-check="${n}-${i}"><span>${esc(t)}</span></label></li>`).join('');
@@ -377,8 +402,8 @@ ${s.ide ? IDE_SECCION : ''}
     ${s.chips ? '<div style="margin-bottom:30px"></div>' : `<div class="hero__cta reveal" style="margin:18px 0 34px">
       <a class="btn" href="${TINKERCAD}" target="_blank" rel="noopener noreferrer">Abrir Tinkercad Circuits ↗</a>
     </div>`}
-    <h3 class="h3 reveal" style="margin-top:0">Guía de la actividad</h3>
-    ${media('drive', s.drive, 'Guía de la actividad · Sesión ' + n, 'media--guide')}
+    <h3 class="h3 reveal" style="margin-top:0">${esc(s.guiaTitulo || 'Guía de la actividad')}</h3>
+    ${media('drive', s.drive, (s.guiaTitulo || 'Guía de la actividad') + ' · Sesión ' + n, 'media--guide')}
     <div class="split" style="margin-top:44px">
       <div class="reveal">
         <h3 class="h3" style="margin-top:0">${s.predTitulo || '✍ Fase de predicción'}</h3>
@@ -394,24 +419,24 @@ ${s.ide ? IDE_SECCION : ''}
   <div class="wrap">
     <div class="challenge reveal">
       <p class="kicker" style="color:var(--cyan)">${s.retoKicker || 'Reto'}</p>
-      <h3>${s.chips ? '🔧' : '⚡'} ${esc(reto[0])}</h3>
+      <h3>${s.retoIcon || (s.chips ? '🔧' : '⚡')} ${esc(reto[0])}</h3>
       ${reto[1] ? `<p>${esc(reto[1])}</p>` : '<p>Marca cada paso cuando lo completes.</p>'}
       <ul class="checks">${checks}</ul>
       <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
       <span class="meter__txt" data-meter>0 de ${reto[2].length} completados</span>
       ${reto[3] ? `<div class="hint"><strong>${s.chips ? 'Importante' : 'Pista'}:</strong> ${esc(reto[3])}</div>` : ''}
     </div>
-    ${s.extra ? CIERRE5 : ''}
+    ${s.cierre === 6 ? CIERRE6 : s.extra ? CIERRE5 : ''}
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <p class="kicker reveal">Presentación refuerzo</p>
+    ${s.sinRefuerzo ? '' : `<p class="kicker reveal">Presentación refuerzo</p>
     <h2 class="h2 reveal">${esc(s.refuerzo[0])}</h2>
     <p class="reveal">A continuación podrás observar una presentación de refuerzo de lo visto en clase.</p>
-    ${media('slides', s.slides, 'Presentación de refuerzo · Sesión ' + n, 'media--wide')}
-    <div class="pager reveal" style="margin-top:34px">${prev}${next}</div>
+    ${media('slides', s.slides, 'Presentación de refuerzo · Sesión ' + n, 'media--wide')}`}
+    <div class="pager reveal" style="margin-top:${s.sinRefuerzo ? 0 : 34}px">${prev}${next}</div>
   </div>
 </section>`;
 }
@@ -499,6 +524,42 @@ const CIERRE5 = `
     <div class="grid grid--2" style="margin-top:28px">
       <div class="card reveal"><div class="card__icon">📸</div><h3>Evidencia del armado</h3><p>Cada grupo entrega las fotografías tomadas durante el montaje (componentes antes de conectar, proceso y prototipo terminado) para la página de evidencias del proyecto.</p></div>
       <div class="card reveal" style="--d:.1s"><div class="card__icon">🏠</div><h3>Tarea para la casa</h3><p>Avanza en el código de tu proyecto: variables, <code>setup()</code> y las primeras líneas de <code>loop()</code>. Se verificará en la Sesión 6, junto con el funcionamiento del prototipo.</p></div>
+    </div>`;
+
+CONTENIDO[6] = s => `
+    <h2 class="h2 reveal">Qué se verifica hoy</h2>
+    <p class="lead reveal">Hoy se revisan la <strong>conexión</strong>, el <strong>código</strong>, el <strong>funcionamiento del prototipo</strong> y la <strong>explicación de cada integrante</strong>, según la matriz de valoración que verás más abajo. Recorre la presentación para saber cómo depurar y cómo funciona la sesión.</p>
+    ${media('drive', s.slides, 'Presentación · Verificación y cierre del prototipo', 'media--wide')}
+    <h3 class="h3 reveal">Depuración en cuatro pasos</h3>
+    <div class="grid grid--2">
+      <div class="card reveal"><div class="card__icon">🔌</div><h3>1 · Alimentación</h3><p>Comprueba que 5V y GND estén bien conectados y que ningún cable esté flojo.</p></div>
+      <div class="card reveal" style="--d:.08s"><div class="card__icon">📌</div><h3>2 · Pines y variables</h3><p>Los pines del montaje deben coincidir con las variables del código.</p></div>
+      <div class="card reveal"><div class="card__icon">⚙️</div><h3>3 · pinMode()</h3><p>Cada pin debe configurarse en <code>setup()</code> como <code>INPUT</code> u <code>OUTPUT</code> según el componente.</p></div>
+      <div class="card reveal" style="--d:.08s"><div class="card__icon">🧠</div><h3>4 · La lógica</h3><p>Revisa los <code>if / else</code>, los ciclos <code>for</code>, los valores de <code>map()</code> o de distancia.</p></div>
+    </div>
+    <div class="grid grid--3" style="margin-top:22px">
+      <div class="card reveal"><div class="card__icon">🖥️</div><h3>Monitor Serie</h3><p>Con <code>Serial.print()</code> puedes ver los valores que lee un sensor y confirmar si el problema está en la entrada o en la salida.</p></div>
+      <div class="card reveal" style="--d:.08s"><div class="card__icon">🐞</div><h3>Errores frecuentes</h3><p>Falta de punto y coma o de llaves, variable no declarada o declarada abajo, cable flojo, componente al revés, sensor sin calibrar.</p></div>
+      <div class="card reveal" style="--d:.16s"><div class="card__icon">🎯</div><h3>Cómo funciona la sesión</h3><p>Turnos por sorteo, demostración del prototipo, una pregunta oral a cada integrante y el post-test individual al final.</p></div>
+    </div>`;
+
+const CIERRE6 = `
+    <div class="evidence reveal" style="margin-top:28px">
+      <div class="evidence__icon" aria-hidden="true">📝</div>
+      <div class="evidence__text">
+        <p class="kicker" style="color:var(--cyan)">Post-test</p>
+        <h2>Cierra el proyecto: responde el post-test</h2>
+        <p>Cada estudiante responde de forma individual, en computador o celular (unos 20 minutos). El docente titular diligencia el cuestionario de impacto sobre la estrategia.</p>
+      </div>
+      <div class="posttest__btns">
+        <a class="btn" href="${POSTEST_ESTUDIANTES}" target="_blank" rel="noopener noreferrer">Post-test · Estudiantes ↗</a>
+        <a class="btn btn--ghost" href="${POSTEST_DOCENTE}" target="_blank" rel="noopener noreferrer">Post-test · Docente titular ↗</a>
+      </div>
+    </div>
+    <div class="grid grid--3" style="margin-top:28px">
+      <div class="card reveal"><div class="card__icon">🗣️</div><h3>Ronda de cierre</h3><p>Cada grupo comparte en una frase un aprendizaje y una dificultad que tuvo en el proyecto.</p></div>
+      <div class="card reveal" style="--d:.08s"><div class="card__icon">📓</div><h3>Boleta de salida</h3><p>En tu cuaderno completa: <strong>"Antes del proyecto yo… y ahora yo…"</strong>.</p></div>
+      <div class="card reveal" style="--d:.16s"><div class="card__icon">📸</div><h3>Entrega de evidencias</h3><p>Entrega las fotografías, el video y el código final para la página de evidencias del proyecto.</p></div>
     </div>`;
 
 const CODE5 = ['#include <Servo.h>', '', 'const int pinServo = 9;', 'const int pinTrig = 7;', 'const int pinEcho = 6;', '', 'Servo miServo;', '',
@@ -621,6 +682,45 @@ const SIM_INIT = {
     setCodeLines(code, code4(false)); draw();
     return stop;
   }
+};
+
+/* ---------- Sesión 6: detective de errores ---------- */
+const BUGS = [
+  { lines: ['const int led = 8;', '', 'void setup() {', '  pinMode(led, OUTPUT);', '}', '', 'void loop() {', '  digitalWrite(led, HIGH)', '  delay(500);', '  digitalWrite(led, LOW);', '  delay(500);', '}'],
+    bad: 7, why: 'Falta el punto y coma (;) al final de digitalWrite(led, HIGH).' },
+  { lines: ['const int boton = 2;', 'const int led = 8;', '', 'void setup() {', '  pinMode(boton, INPUT);', '  pinMode(9, OUTPUT);', '}', '', 'void loop() {', '  if (digitalRead(boton) == HIGH) {', '    digitalWrite(led, HIGH);', '  } else {', '    digitalWrite(led, LOW);', '  }', '}'],
+    bad: 5, why: 'El pinMode usa el pin 9, pero el LED está en la variable led = 8. Los pines deben coincidir.' },
+  { lines: ['const int led = 8;', '', 'void setup() {', '  pinMode(led, INPUT);', '}', '', 'void loop() {', '  digitalWrite(led, HIGH);', '  delay(500);', '  digitalWrite(led, LOW);', '  delay(500);', '}'],
+    bad: 3, why: 'Un LED es una salida: el pinMode debe ser OUTPUT, no INPUT.' }
+];
+SIM_HTML[6] = () => `<span class="label">Juego · Detective de errores</span>
+  <div class="sim">
+    <p style="margin:0" id="s6q"></p>
+    <pre class="code pickable" id="s6code"><code></code></pre>
+    <p class="readout" id="s6msg" role="status" aria-live="polite">Haz clic en la línea que tiene el error.</p>
+    <div class="sim__row"><button class="btn btn-sm btn--teal" type="button" id="s6next" hidden>Siguiente error →</button><span class="readout" id="s6score"></span></div>
+  </div>`;
+SIM_INIT[6] = root => {
+  const code = $('#s6code', root), msg = $('#s6msg', root), q = $('#s6q', root), nextBtn = $('#s6next', root), score = $('#s6score', root);
+  let i = 0, aciertos = 0, answered = false;
+  const load = () => {
+    const b = BUGS[i]; answered = false;
+    q.innerHTML = `<strong>Error ${i + 1} de ${BUGS.length}.</strong> Este programa tiene un error escondido.`;
+    setCodeLines(code, b.lines);
+    msg.innerHTML = 'Haz clic en la línea que tiene el error.';
+    nextBtn.hidden = true; score.textContent = `Aciertos: ${aciertos}`;
+  };
+  code.addEventListener('click', e => {
+    const ln = e.target.closest('.ln'); if (!ln || answered) return;
+    const b = BUGS[i], n = +ln.dataset.l;
+    if (n === b.bad) { aciertos++; ln.classList.add('ok'); msg.innerHTML = `✅ ¡Correcto! ${b.why}`; }
+    else { ln.classList.add('bad'); $$('.ln', code)[b.bad].classList.add('ok'); msg.innerHTML = `❌ No era esa línea. El error estaba en la marcada en verde. ${b.why}`; }
+    answered = true; score.textContent = `Aciertos: ${aciertos}`;
+    if (i < BUGS.length - 1) { nextBtn.hidden = false; nextBtn.textContent = 'Siguiente error →'; }
+    else { nextBtn.hidden = false; nextBtn.textContent = '↺ Jugar de nuevo'; }
+  });
+  nextBtn.addEventListener('click', () => { if (i < BUGS.length - 1) i++; else { i = 0; aciertos = 0; } load(); });
+  load();
 };
 
 /* ---------- Sesión 5: servo y sensor ultrasónico ---------- */
@@ -814,7 +914,7 @@ function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.ad
 const main = $('#main');
 const TITLES = { inicio: 'Inicio', 'sobre-el-proyecto': 'Sobre el proyecto' };
 const VIEWS = { inicio: () => viewInicio(), 'sobre-el-proyecto': () => viewSobre() };
-[1, 2, 3, 4, 5].forEach(n => { VIEWS['sesion-' + n] = () => viewSesion(n); TITLES['sesion-' + n] = 'Sesión ' + n; });
+[1, 2, 3, 4, 5, 6].forEach(n => { VIEWS['sesion-' + n] = () => viewSesion(n); TITLES['sesion-' + n] = 'Sesión ' + n; });
 let cleanup = null;
 
 function route() {

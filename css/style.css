@@ -388,3 +388,12 @@ table.pins code{font-family:var(--f-code);color:var(--orange);font-weight:700}
 .ide__steps b{font-family:var(--f-title);font-size:1.15rem;color:var(--head)}
 .ide__steps span{color:var(--muted);font-size:.96rem}
 @media (max-width:620px){.ide__cta .btn{width:100%;justify-content:center}}
+
+/* ---------- Sesión 6: detective de errores y post-test ---------- */
+[hidden]{display:none!important}
+.code.pickable .ln{cursor:pointer}
+.code.pickable .ln:hover{background:rgba(0,217,255,.12)}
+.code .ln.ok{background:rgba(76,217,138,.22);box-shadow:inset 3px 0 #4cd98a}
+.code .ln.bad{background:rgba(228,113,43,.28);box-shadow:inset 3px 0 var(--orange)}
+.posttest__btns{display:flex;flex-direction:column;gap:12px}
+@media (max-width:620px){.posttest__btns,.posttest__btns .btn{width:100%}.posttest__btns .btn{justify-content:center}}
