@@ -157,7 +157,7 @@ const SESIONES = {
     obj: ['Verificar, depurar y explicar tu prototipo',
           'Verificar y depurar un prototipo con Arduino, explicando con tus palabras la lógica de tu programa (variables, entradas y salidas, condiciones y ciclos) y valorando lo aprendido durante el proyecto.'],
     drive: '10atE_LrQIliDdmfYU1M1QaWB3yQGgmLk',            // rúbrica (matriz de valoración)
-    slides: '1sWBvpj54lzIurN47wZk_KUM7cQx5QS8s',           // presentación de la sesión
+    slides: '1moPvT4dIdauDMkpbrUtD5-yy3QCHhFx31xr4LzqsJOI', // presentación de la sesión (Google Slides)
     videos: [],
     guiaTitulo: 'Matriz de valoración (rúbrica de evaluación)',
     actividad: ['Últimos detalles y verificación por turnos', 'Fase 1 (20 minutos): afina tu prototipo y depura lo que falte. Fase 2 (40 minutos): cuando el docente llame a tu grupo, haz la demostración y responde una pregunta sobre tu código.'],
@@ -529,7 +529,7 @@ const CIERRE5 = `
 CONTENIDO[6] = s => `
     <h2 class="h2 reveal">Qué se verifica hoy</h2>
     <p class="lead reveal">Hoy se revisan la <strong>conexión</strong>, el <strong>código</strong>, el <strong>funcionamiento del prototipo</strong> y la <strong>explicación de cada integrante</strong>, según la matriz de valoración que verás más abajo. Recorre la presentación para saber cómo depurar y cómo funciona la sesión.</p>
-    ${media('drive', s.slides, 'Presentación · Verificación y cierre del prototipo', 'media--wide')}
+    ${media('slides', s.slides, 'Presentación · Verificación y cierre del prototipo', 'media--wide')}
     <h3 class="h3 reveal">Depuración en cuatro pasos</h3>
     <div class="grid grid--2">
       <div class="card reveal"><div class="card__icon">🔌</div><h3>1 · Alimentación</h3><p>Comprueba que 5V y GND estén bien conectados y que ningún cable esté flojo.</p></div>
@@ -544,7 +544,7 @@ CONTENIDO[6] = s => `
     </div>`;
 
 const CIERRE6 = `
-    <div class="evidence reveal" style="margin-top:28px">
+    <div class="evidence posttest reveal" style="margin-top:28px">
       <div class="evidence__icon" aria-hidden="true">📝</div>
       <div class="evidence__text">
         <p class="kicker" style="color:var(--cyan)">Post-test</p>
@@ -552,8 +552,16 @@ const CIERRE6 = `
         <p>Cada estudiante responde de forma individual, en computador o celular (unos 20 minutos). El docente titular diligencia el cuestionario de impacto sobre la estrategia.</p>
       </div>
       <div class="posttest__btns">
-        <a class="btn" href="${POSTEST_ESTUDIANTES}" target="_blank" rel="noopener noreferrer">Post-test · Estudiantes ↗</a>
-        <a class="btn btn--ghost" href="${POSTEST_DOCENTE}" target="_blank" rel="noopener noreferrer">Post-test · Docente titular ↗</a>
+        <a class="ptbtn ptbtn--est" href="${POSTEST_ESTUDIANTES}" target="_blank" rel="noopener noreferrer">
+          <span class="ptbtn__icon" aria-hidden="true">🎒</span>
+          <span class="ptbtn__txt"><small>Post-test</small><b>Soy estudiante</b><em>Individual · unos 20 minutos</em></span>
+          <span class="ptbtn__go">Responder ↗</span>
+        </a>
+        <a class="ptbtn ptbtn--doc" href="${POSTEST_DOCENTE}" target="_blank" rel="noopener noreferrer">
+          <span class="ptbtn__icon" aria-hidden="true">👨‍🏫</span>
+          <span class="ptbtn__txt"><small>Post-test</small><b>Soy docente titular</b><em>Cuestionario de impacto de la estrategia</em></span>
+          <span class="ptbtn__go">Responder ↗</span>
+        </a>
       </div>
     </div>
     <div class="grid grid--3" style="margin-top:28px">
