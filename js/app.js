@@ -61,8 +61,8 @@ const RUTA = [
   { n: 5, icon: 'ƒ', t: 'Del diagrama al prototipo', d: 'Montaje de entradas y salidas con Arduino: servomotor, sensor ultrasónico y lectura de diagramas.' },
   { n: 6, icon: '✓', t: 'Verificación y cierre del prototipo', d: 'Depuración, calificación con la rúbrica, post-test y evidencias finales.' }
 ];
-const HECHAS = 5;      // sesiones terminadas
-const EN_CURSO = 6;    // sesión que se está realizando (0 si ninguna)
+const HECHAS = 6;      // sesiones terminadas
+const EN_CURSO = 0;    // sesión que se está realizando (0 si ninguna)
 
 const SESIONES = {
   1: {
@@ -153,7 +153,7 @@ const SESIONES = {
     fecha: 'SESIÓN 6 · 9 de noviembre de 2026', horas: '2H',
     titulo: 'Verificación y cierre del prototipo',
     sub: 'Ajusto los últimos detalles, explico mi código y valoro lo aprendido.',
-    chips: ['En curso', 'Cierre del proyecto', 'Grupos de proyecto', '2 horas · 9 de noviembre'],
+    chips: ['Cierre del proyecto', 'Grupos de proyecto', '2 horas · 9 de noviembre'],
     obj: ['Verificar, depurar y explicar tu prototipo',
           'Verificar y depurar un prototipo con Arduino, explicando con tus palabras la lógica de tu programa (variables, entradas y salidas, condiciones y ciclos) y valorando lo aprendido durante el proyecto.'],
     drive: '10atE_LrQIliDdmfYU1M1QaWB3yQGgmLk',            // rúbrica (matriz de valoración)
@@ -219,7 +219,7 @@ const heroHome = () => `
       </div>
     </div>
     <div class="board3d">
-      <model-viewer id="board3d" src="models/arduino-uno.glb" alt="Modelo 3D de una placa Arduino UNO que gira lentamente"
+      <model-viewer id="board3d" data-src="models/arduino-uno.glb" alt="Modelo 3D de una placa Arduino UNO que gira lentamente"
         auto-rotate rotation-per-second="18deg" camera-controls disable-zoom disable-pan touch-action="pan-y"
         camera-orbit="30deg 62deg 105%" min-camera-orbit="auto 5deg auto" max-camera-orbit="auto 120deg auto" field-of-view="30deg"
         interaction-prompt="none" shadow-intensity="1" shadow-softness=".8" exposure="1.05" environment-image="neutral" loading="eager" reveal="auto">
@@ -246,7 +246,7 @@ function viewInicio() {
       ? `<a class="card card--link ${now ? 'card--now' : 'card--done'} reveal" style="--d:${i * .08}s" href="#/sesion-${r.n}">${inner}</a>`
       : `<div class="card card--soon reveal" style="--d:${i * .08}s">${inner}</div>`;
   }).join('');
-  const steps = RUTA.map(r => `<a href="#/sesion-${r.n}" class="${r.n <= HECHAS ? 'is-done' : r.n === EN_CURSO ? 'is-now' : ''}" ${r.n > EN_CURSO ? 'tabindex="-1" aria-disabled="true"' : ''}><span>${r.n}</span>Sesión ${r.n}</a>`).join('');
+  const steps = RUTA.map(r => `<a href="#/sesion-${r.n}" class="${r.n <= HECHAS ? 'is-done' : r.n === EN_CURSO ? 'is-now' : ''}" ${r.n > Math.max(HECHAS, EN_CURSO) ? 'tabindex="-1" aria-disabled="true"' : ''}><span>${r.n <= HECHAS ? '✓' : r.n}</span>Sesión ${r.n}</a>`).join('');
   return `${heroHome()}
 <section class="section">
   <div class="wrap">
@@ -285,7 +285,7 @@ function viewInicio() {
       <div class="stat reveal"><b data-count="6">0</b><span>sesiones planeadas</span></div>
       <div class="stat reveal" style="--d:.1s"><b data-count="${HECHAS}">0</b><span>sesiones realizadas</span></div>
       <div class="stat reveal" style="--d:.2s"><b data-count="25">0</b><span>estudiantes participantes</span></div>
-      <div class="stat reveal" style="--d:.3s"><b data-count="11">0</b><span>prototipos en construcción</span></div>
+      <div class="stat reveal" style="--d:.3s"><b data-count="11">0</b><span>prototipos construidos</span></div>
     </div>
   </div>
 </section>`;
@@ -299,14 +299,13 @@ function viewSobre() {
     ['Sesión 3 · 13 al 17 de octubre', 'Condicionales y ciclos for con seis LED.'],
     ['Sesión 4 · 19 al 23 de octubre', 'Entradas análogas y la función map().'],
     ['Sesión 5 · 26 y 30 de octubre', 'Del diagrama al prototipo: montaje de entradas y salidas.'],
-    ['Sesión 6 · 9 de noviembre · En curso', 'Verificación y cierre del prototipo: rúbrica, post-test y evidencias finales.']
+    ['Sesión 6 · 9 de noviembre','Verificación y cierre del prototipo: rúbrica, post-test y evidencias finales.']
   ].map(([b, t]) => `<div class="timeline__item reveal"><b>${b}</b>${t}</div>`).join('');
   const infoCards = [
-    ['👨‍💻', 'Autor', 'Maicol Alexander Cruz Cruz', 'Código UPTC: 202220426'],
     ['👥', 'Población / Objetivo', 'Grado 8° (Octavo)', '', '🎒 25 estudiantes'],
     ['👩‍🏫', 'Asesora', 'Adriana Sandoval Espitia'],
     ['👨‍🏫', 'Docente titular', 'Óscar Mauricio Hernández Yomayuza'],
-    ['🏫', 'Institución', 'I.E. Técnica José Cayetano Vásquez', 'Ciénega, Boyacá'],
+    ['<img src="img/logo-colegio.png" alt="">', 'Institución', 'I.E. Técnica José Cayetano Vásquez', 'Ciénega, Boyacá'],
     ['🎓', 'Programa', 'Licenciatura en Informática', 'Universidad Pedagógica y Tecnológica de Colombia (UPTC)'],
     ['✉️', 'Contacto', '<a href="mailto:Maicol.cruz01@uptc.edu.co">Maicol.cruz01@uptc.edu.co</a>']
   ].map(([ico, lab, val, sub, tag], i) => `<div class="infocard reveal" style="--d:${(i % 2) * .08}s"><div class="infocard__icon" aria-hidden="true">${ico}</div><div><span class="infocard__label">${lab}</span><span class="infocard__value">${val}</span>${sub ? `<span class="infocard__sub">${sub}</span>` : ''}${tag ? `<span class="infocard__tag">${tag}</span>` : ''}</div></div>`).join('');
@@ -332,6 +331,19 @@ function viewSobre() {
   <div class="wrap">
     <p class="kicker reveal">Ficha del proyecto</p>
     <h2 class="h2 h2--ink reveal">Quiénes participan</h2>
+    <article class="author reveal">
+      <figure class="author__photo"><img src="img/foto-autor.jpg" alt="Maicol Alexander Cruz Cruz, autor de la estrategia" loading="lazy"></figure>
+      <div class="author__info">
+        <span class="infocard__label">Autor de la estrategia</span>
+        <h3>Maicol Alexander Cruz Cruz</h3>
+        <p class="author__role">Docente en formación · Licenciatura en Informática, UPTC</p>
+        <ul class="author__meta">
+          <li>🎓 Código UPTC: 202220426</li>
+          <li>✉️ <a href="mailto:Maicol.cruz01@uptc.edu.co">Maicol.cruz01@uptc.edu.co</a></li>
+        </ul>
+        <p class="author__quote">Diseñó y desarrolló la estrategia con los estudiantes de grado octavo y creó este sitio para documentar el proceso.</p>
+      </div>
+    </article>
     <div class="infogrid">${infoCards}</div>
   </div>
 </section>
@@ -348,6 +360,7 @@ function viewSobre() {
   <div class="wrap">
     <div class="logos reveal" aria-label="Logotipos del proyecto">
       <figure class="logos__item logos__item--wide"><img src="img/Logo%20LI.svg" alt="Licenciatura en Informática, Universidad Pedagógica y Tecnológica de Colombia" loading="lazy"></figure>
+      <figure class="logos__item"><img src="img/logo-colegio.png" alt="Escudo de la I.E. Técnica José Cayetano Vásquez, Ciénega" loading="lazy"></figure>
       <figure class="logos__item"><img src="img/Logo_de_la_UPTC.svg" alt="Escudo de la Universidad Pedagógica y Tecnológica de Colombia (UPTC)" loading="lazy"></figure>
       <figure class="logos__item"><img src="img/logo_arduino_programacion.png" alt="Logotipo del proyecto de aula: Arduino y programación" loading="lazy"></figure>
     </div>
@@ -876,8 +889,14 @@ function wireView(root, n) {
   // placa 3D que sigue el cursor
   const mv = $('#board3d', root);
   if (mv) {   // el modelo 3D reemplaza a la placa dibujada con CSS cuando termina de cargar
-    const ready = () => mv.closest('.board3d').classList.add('is-ready');
-    if (mv.loaded) ready(); else mv.addEventListener('load', ready, {once: true});
+    // en celulares o con ahorro de datos se queda la placa en CSS: el modelo pesa 7,6 MB
+    const ahorro = !matchMedia('(min-width: 700px)').matches || (navigator.connection && navigator.connection.saveData);
+    if (ahorro) mv.remove();
+    else {
+      const ready = () => mv.closest('.board3d').classList.add('is-ready');
+      mv.addEventListener('load', ready, {once: true});
+      mv.setAttribute('src', mv.dataset.src);   // atributo (no propiedad): el visor puede cargar después
+    }
   }
   const chip = $('#chip', root);
   if (chip && matchMedia('(pointer:fine)').matches && !reduced) {

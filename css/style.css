@@ -426,3 +426,43 @@ table.pins code{font-family:var(--f-code);color:var(--orange);font-weight:700}
   .ptbtn{flex-wrap:wrap;padding:18px}
   .ptbtn__go{width:100%;text-align:center}
 }
+
+/* ---------- escudo del colegio ---------- */
+.footer__badge{gap:16px}
+.footer__badge .footer__crest{height:58px;padding-right:16px;border-right:1px solid #d5dde5}
+.infocard__icon img{width:40px;height:40px;object-fit:contain}
+.logos{grid-template-columns:1.6fr 1fr 1fr 1fr}
+@media (max-width:820px){
+  .logos{grid-template-columns:repeat(3,1fr)}
+  .logos__item{padding:16px}
+  .logos__item img{max-height:110px}
+}
+@media (max-width:620px){.footer__badge .footer__crest{height:46px;padding-right:12px}}
+
+/* ---------- "Realizada" llamativo ---------- */
+.card--done{border-color:rgba(0,151,156,.35)}
+.card--done::before{content:"✓ Realizada";color:#fff;background:linear-gradient(135deg,#00b894,#00979C 55%,#00D9FF);border:0;padding:5px 12px;box-shadow:0 4px 14px rgba(0,151,156,.4),0 0 0 3px rgba(0,217,255,.15);letter-spacing:.1em}
+.card--done:hover::before{box-shadow:0 6px 18px rgba(0,151,156,.55),0 0 0 4px rgba(0,217,255,.25)}
+.route a.is-done span{background:linear-gradient(135deg,#00b894,#00979C);border-color:#00979C;color:#fff;box-shadow:0 4px 12px rgba(0,151,156,.35)}
+
+/* ---------- autor ---------- */
+.author{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,40px);align-items:center;background:linear-gradient(135deg,var(--navy),var(--navy-2));color:var(--paper);border-radius:22px;padding:clamp(22px,4vw,40px);margin-bottom:24px;border:1px solid #2a3a63;border-left:6px solid var(--orange);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.author::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(0,217,255,.18),transparent 70%)}
+.author__photo{margin:0;width:clamp(150px,22vw,210px);aspect-ratio:1;border-radius:50%;padding:5px;background:conic-gradient(from 200deg,var(--cyan),var(--teal),var(--orange),var(--cyan));box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.author__photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%;border-radius:50%;border:4px solid var(--navy)}
+.author__info{position:relative;z-index:1}
+.author .infocard__label{color:var(--cyan)}
+.author h3{font-size:clamp(1.8rem,4vw,2.6rem);margin:.1em 0 .15em}
+.author__role{color:#cfe3ea;font-size:1.05rem;margin:0 0 .8em}
+.author__meta{list-style:none;padding:0;margin:0 0 .9em;display:flex;flex-wrap:wrap;gap:8px}
+.author__meta li{background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.3);border-radius:999px;padding:5px 14px;font-size:.92rem}
+.author__meta a{color:var(--cyan);text-decoration:none}
+.author__quote{margin:0;color:#aebcd0;font-style:italic;max-width:60ch}
+@media (max-width:620px){.author{grid-template-columns:1fr;justify-items:center;text-align:center}.author__meta{justify-content:center}}
+
+/* ---------- pie: logos separados y avatar ---------- */
+.footer__logos{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.footer__badge--crest{padding:8px 12px}
+.footer__badge .footer__crest{height:62px;padding-right:0;border-right:0}
+.footer__by{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.footer__avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 22%;border:2px solid var(--cyan);box-shadow:0 0 12px rgba(0,217,255,.35)}
